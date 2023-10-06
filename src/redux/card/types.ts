@@ -15,3 +15,10 @@ export interface CardSliceState {
     items: Card[];
     status: Status;
 }
+
+export type CardProps = {
+    image: string;
+    filesize: number;
+    timestamp: number;
+    category: string;
+}

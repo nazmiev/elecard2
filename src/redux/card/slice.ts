@@ -14,8 +14,10 @@ const cardSlice = createSlice({
         setItems(state, action: PayloadAction<Card[]>) {
             state.items = action.payload;
         },
+        delItems(state, action: PayloadAction<any>) {
+            state.items = state.items.filter(el => el.image !== action.payload); 
+        },
         sortItems(state, action: PayloadAction<any>) {
-            console.log('action.payload: ', action.payload);
             switch (action.payload) {
                 case "size":
                     state.items = state.items.sort((a, b) => a.filesize - b.filesize);
@@ -70,6 +72,6 @@ const cardSlice = createSlice({
     }
 });
 
-export const { setItems, sortItems } = cardSlice.actions;
+export const { setItems, sortItems, delItems } = cardSlice.actions;
 
 export default cardSlice.reducer;

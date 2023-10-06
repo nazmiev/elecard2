@@ -1,20 +1,9 @@
 import { setSort, setView } from "../../redux/filter/slice";
 import { useAppDispatch } from "../../redux/store";
 import styles from "./Header.module.scss"
-import { SortPropertyEnum } from '../../redux/filter/types';
+import { SortItem, sortList } from '../../redux/filter/types';
 import { sortItems } from "../../redux/card/slice";
-
-type SortItem = {
-    name: string;
-    sortProperty: SortPropertyEnum;
-}
-
-export const sortList: SortItem[] = [
-    { name: "category", sortProperty: SortPropertyEnum.CATEGORY },
-    { name: "date", sortProperty: SortPropertyEnum.DATE },
-    { name: "name", sortProperty: SortPropertyEnum.NAME },
-    { name: "size", sortProperty: SortPropertyEnum.SIZE },
-];
+import { fetchCards } from "../../redux/card/asyncActions";
 
 export default function Header() {
 
@@ -45,6 +34,9 @@ export default function Header() {
             </fieldset>
             <button type="button" onClick={() => {
                 localStorage.setItem('closedPics', '');
+                dispatch(
+                    fetchCards()
+                  )
             }}>Опять показать все картинки</button>
             <fieldset>
                 <legend>Сортировка:</legend>
