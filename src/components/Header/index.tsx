@@ -2,6 +2,7 @@ import { setSort, setView } from "../../redux/filter/slice";
 import { useAppDispatch } from "../../redux/store";
 import styles from "./Header.module.scss"
 import { SortPropertyEnum } from '../../redux/filter/types';
+import { sortItems } from "../../redux/card/slice";
 
 type SortItem = {
     name: string;
@@ -12,7 +13,7 @@ export const sortList: SortItem[] = [
     { name: "category", sortProperty: SortPropertyEnum.CATEGORY },
     { name: "date", sortProperty: SortPropertyEnum.DATE },
     { name: "name", sortProperty: SortPropertyEnum.NAME },
-    { name: "size", sortProperty: SortPropertyEnum.NAME },
+    { name: "size", sortProperty: SortPropertyEnum.SIZE },
 ];
 
 export default function Header() {
@@ -22,8 +23,9 @@ export default function Header() {
         dispatch(setView(value))
     }
 
-    const onClickListItems = (obj: SortItem) => {
+    const onChangeSort = (obj: SortItem) => {
         dispatch(setSort(obj));
+        dispatch(sortItems(obj.sortProperty));
     };
 
     return (
@@ -48,7 +50,7 @@ export default function Header() {
                 <legend>Сортировка:</legend>
                 {sortList.map((obj, i) => (
                     <div key={i}>
-                        <input onChange={() => onClickListItems(obj)}
+                        <input onChange={() => onChangeSort(obj)}
                             type="radio" name="sort" id={obj.sortProperty} value={obj.sortProperty} />
                         <label htmlFor={obj.sortProperty}>{obj.name}</label>
                     </div>

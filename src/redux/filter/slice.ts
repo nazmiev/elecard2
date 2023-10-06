@@ -5,7 +5,7 @@ const initialState: FilterSliceState = {
   view: "cards",
   currentPage: 1,
   sort: {
-    name: "категории",
+    name: "category",
     sortProperty: SortPropertyEnum.CATEGORY,
   },
 };
@@ -29,7 +29,6 @@ const filterSlice = createSlice({
         state.view = action.payload.view;
         state.sort = action.payload.sort;
       } else {
-        state.currentPage = 1;
         state.view = "cards";
         state.sort = {
           name: 'категории',
@@ -40,6 +39,6 @@ const filterSlice = createSlice({
   },
 });
 
-export const { setView, setSort, setCurrentPage, setFilters } = filterSlice.actions;
+export const { setView, setSort, setFilters } = filterSlice.actions;
 
 export default filterSlice.reducer;
