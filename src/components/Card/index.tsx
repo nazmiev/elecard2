@@ -9,11 +9,11 @@ type CardProps = {
 
 const Card: React.FC<CardProps> = ({ image }) => {
 
-    function closedPicsAdd(image: string) {
+    // function closedPicsAdd(image: string) {
         // const tmp = new Set([...closed, image]);
         // setClosed(tmp);
         // localStorage.setItem('closedPics', JSON.stringify([...tmp]))
-    }
+    // }
 
     return (
         <article key={image} className={styles.card}>
