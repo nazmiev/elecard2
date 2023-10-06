@@ -21,6 +21,7 @@ const Card: React.FC<CardProps> = ({ image }) => {
         <article key={image} className={styles.card}>
             <button type="button" onClick={() => onClosedPic(image)}>X</button>
             <img src={`http://contest.elecard.ru/frontend_data/${image}`} />
+            <p>Yep, just some simple content ecapsulated in this card</p>
         </article>
     );
 }

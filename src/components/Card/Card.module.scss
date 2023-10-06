@@ -1,5 +1,9 @@
 .card {
     position: relative;
+    max-width: 300px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
 
     button {
         position: absolute;

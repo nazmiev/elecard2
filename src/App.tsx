@@ -35,7 +35,7 @@ export default function App() {
   return (
     <>
       <Header />
-      <section style={{ display: "flex", flexWrap: "wrap", marginTop: "160px", gap: "1vw" }}>
+      <section style={{ display: "flex", flexWrap: "wrap", marginTop: "160px", gap: "1vw", backgroundColor: "#eee" }}>
         {items.length ? 
           items.map(item => <Card key={item.image} {...item}/>) : 
           (<h1>'Загрузка...'</h1>)
