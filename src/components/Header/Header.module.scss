@@ -11,3 +11,14 @@
     right: 0;
     z-index: 1;
 }
+
+.content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 150px -15px;
+    gap: 1vw;
+    background-color: #eee;
+    padding-top: 30px;
+    min-height: 90vh;
+}

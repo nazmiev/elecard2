@@ -1,7 +1,30 @@
 .treeitem {
-    margin-bottom: 1vh;
-    
+    margin-bottom: calc(min(1vh, 10px));
+
     .childs {
         padding-left: 5vw;
+
+        img {
+            max-width: 50px;
+            max-height: 50px;
+        }
+    }
+
+    .imgContainer {
+        position: fixed;
+        max-width: 100vw;
+        max-height: 100vh;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        display: flex;
+        background-color: #000;
+        justify-content: center;
+
+        button {
+            width: 25px;
+            height: 25px;
+        }
     }
 }
