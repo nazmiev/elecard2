@@ -7,6 +7,7 @@ import { selectCardsData } from './redux/card/selectors';
 import { fetchCards } from './redux/card/asyncActions';
 import { useAppDispatch } from './redux/store';
 import { selectFilter } from './redux/filter/selectors';
+import Tree from './components/Tree';
 
 export default function App() {
   const { items } = useSelector(selectCardsData);
@@ -39,7 +40,7 @@ export default function App() {
       <Header />
       <section style={{ display: "flex", flexWrap: "wrap", marginTop: "160px", gap: "1vw", backgroundColor: "#eee" }}>
         {view == 'list' 
-        ? (items.map(item => (<p key={item.image}>{item.image}</p>)))
+        ? <Tree/>
         : (items.length ? 
           items.map(item => <Card key={item.image} {...item}/>) : 
           (<h1>'Загрузка...'</h1>))
