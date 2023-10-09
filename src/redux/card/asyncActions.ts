@@ -10,14 +10,14 @@ export const fetchCards = createAsyncThunk<Card[]>(
             const { data } = await axios.get<Card[]>(
                 "http://contest.elecard.ru/frontend_data/catalog.json"
             );
-            return data
+            return data.map(item => { item.image = 'http://contest.elecard.ru/frontend_data/' + item.image; return item });
         } catch (e) {
             console.warn('не смог загрузить данные, использую локальные: ', e);
 
             const { data } = await axios.get<Card[]>(
                 baseName + 'catalog.json'
             );
-            return data
+            return data.map(item => { item.image = baseName + item.image; return item });
         }
     }
 )

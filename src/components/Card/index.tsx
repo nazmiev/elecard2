@@ -27,7 +27,7 @@ const Card: React.FC<CardProps> = ({ image, timestamp }) => {
     return (
         <article key={image} className={styles.card}>
             <button type="button" onClick={() => onClosedPic(image)}>X</button>
-            <img src={`http://contest.elecard.ru/frontend_data/${image}`} />
+            <img src={image} />
             <p>{date}</p>
         </article>
     );
