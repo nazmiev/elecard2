@@ -14,8 +14,8 @@ const cardSlice = createSlice({
         setItems(state, action: PayloadAction<Card[]>) {
             state.items = action.payload;
         },
-        delItems(state, action: PayloadAction<any>) {
-            state.items = state.items.filter(el => el.image !== action.payload); 
+        delItems(state, action: PayloadAction<String[]>) {
+            state.items = state.items.filter(el => !action.payload.includes(el.image)); 
         },
         sortItems(state, action: PayloadAction<any>) {
             switch (action.payload) {

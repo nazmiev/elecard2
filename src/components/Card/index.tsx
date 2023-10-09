@@ -3,18 +3,25 @@ import { CardProps } from '../../redux/card/types';
 import { useAppDispatch } from '../../redux/store';
 import styles from './Card.module.scss';
 
+export const loadClosed = () => {
+    let closed = new Set<string>;
+    try {
+        let tmp = localStorage.getItem('closedPics');
+        if (tmp) {
+            closed = new Set(JSON.parse(tmp) as []);
+        }
+    } catch (e) { }
+    return closed;
+}
+
 const Card: React.FC<CardProps> = ({ image, timestamp }) => {
     const dispatch = useAppDispatch();
 
     const onClosedPic = (image: string) => {
-        dispatch(delItems(image));
-        let closed = localStorage.getItem('closedPics');
-        if (closed) {
-            closed = JSON.parse(closed);
-            const tmp = new Set([closed, image]);
-            localStorage.setItem('closedPics', JSON.stringify([tmp]))
-        }
-        localStorage.setItem('closedPics', JSON.stringify(new Set(image)))
+        const closed = loadClosed();
+        closed.add(image);
+        dispatch(delItems([...closed]));
+        localStorage.setItem('closedPics', JSON.stringify([...closed]));
     }
     const date = new Date(timestamp).toDateString();
     return (
