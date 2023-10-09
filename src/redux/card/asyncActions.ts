@@ -2,6 +2,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Card } from "./types";
 import axios from "axios";
 
+const baseName = import.meta.env.BASE_URL;
+
 export const fetchCards = createAsyncThunk<Card[]>(
     'product/fetchProductsStatus',
     async () => {
@@ -14,7 +16,7 @@ export const fetchCards = createAsyncThunk<Card[]>(
             console.warn('не смог загрузить данные, использую локальные: ', e);
 
             const { data } = await axios.get<Card[]>(
-                "/catalog.json"
+                baseName + "/catalog.json"
             );
             return data
         }
