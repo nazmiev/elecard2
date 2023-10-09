@@ -15,7 +15,7 @@ export const fetchCards = createAsyncThunk<Card[]>(
             console.warn('не смог загрузить данные, использую локальные: ', e);
 
             const { data } = await axios.get<Card[]>(
-                baseName + '/catalog.json'
+                baseName + 'catalog.json'
             );
             return data
         }
